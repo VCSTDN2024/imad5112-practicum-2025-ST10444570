@@ -22,27 +22,35 @@
         android:layout_height="300dp"
         app:srcCompat="@drawable/music_logo" />
 
-    <Button
-        android:id="@+id/btnAdd"
+    <EditText
+        android:id="@+id/etTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#F6F3F3"
-        android:text="Add to Playlist" />
+        android:layout_marginTop="15dp"
+        android:hint="Song Title"
+        android:textColor="#FAFAFA" />
 
-
-    <Button
-        android:id="@+id/btnNext"
+    <EditText
+        android:id="@+id/etArtist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#F6F3F3"
-        android:text="Go to Details" />
+        android:textColor="#FAFAFA"
+        android:layout_marginTop="15dp"
+        android:hint="Artist Name" />
 
-    <Button
-        android:id="@+id/btnExit"
+    <EditText android:id="@+id/etRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#F6F3F3"
-        android:text="Exit" />
+        android:inputType="number"
+        android:textColor="#FAFAFA"
+        android:layout_marginTop="15dp"
+        android:hint="Rating (1-5)" />
+
+    <EditText
+        android:id="@+id/etComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FAFAFA"
+        android:layout_marginTop="15dp"
+        android:hint="Comment" />
 </LinearLayout>
