@@ -1,5 +1,7 @@
 package vcmsa.ci.playlistmanagerapp
 
+//Tisetso Lephoto || ST10444570
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
@@ -21,25 +23,26 @@ class MainActivity : AppCompatActivity() {
 
         btnAdd.setOnClickListener {
             val dialogView = layoutInflater.inflate(R.layout.dialog_add_song, null)
-            val dialog = android.app.AlertDialog.Builder(this)
-                .setTitle("Add Song to Playlist")
-                .setView(dialogView)
-                .setPositiveButton("Add") { _, _ ->
-                    val title = dialogView.findViewById<EditText>(R.id.etTitle).text.toString()
-                    val artist = dialogView.findViewById<EditText>(R.id.etArtist).text.toString()
-                    val rating = dialogView.findViewById<EditText>(R.id.etRating).text.toString().toIntOrNull() ?: 0
-                    val comment = dialogView.findViewById<EditText>(R.id.etComment).text.toString()
-
-                    if (rating in 1..5 && songList.size < 4) {
-                        songList.add(Song(title, artist, rating, comment))
-                        Toast.makeText(this, "Song added!", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, "Invalid input or max songs reached", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .setNegativeButton("Cancel", null)
-                .create()
+            val dialog = android.app.AlertDialog.Builder(this).create()
+            dialog.setView(dialogView)
             dialog.show()
+
+            val btnSave = dialogView.findViewById<Button>(R.id.btnSave)
+            btnSave.setOnClickListener {
+                val title = dialogView.findViewById<EditText>(R.id.etTitle).text.toString()
+                val artist = dialogView.findViewById<EditText>(R.id.etArtist).text.toString()
+                val ratingText = dialogView.findViewById<EditText>(R.id.etRating).text.toString()
+                val comment = dialogView.findViewById<EditText>(R.id.etComment).text.toString()
+
+                val rating = ratingText.toIntOrNull()
+                if (title.isNotBlank() && artist.isNotBlank() && rating in 1..5 && MainActivity.songList.size < 4) {
+                    MainActivity.songList.add(Song(title, artist, rating!!, comment))
+                    Toast.makeText(this, "Song saved!", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()  // closes the dialog and returns to main screen
+                } else {
+                    Toast.makeText(this, "Please enter valid details.", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         btnNext.setOnClickListener {

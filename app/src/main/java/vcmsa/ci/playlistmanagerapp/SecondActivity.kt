@@ -1,5 +1,7 @@
 package vcmsa.ci.playlistmanagerapp
 
+//Tisetso Lephoto || ST10444570
+
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,11 @@ class SecondActivity : AppCompatActivity() {
         btnBack = findViewById(R.id.btnBack)
 
         btnShowSongs.setOnClickListener {
+            // Inflate the new layout
+            val displayedSongsView = layoutInflater.inflate(R.layout.displayed_songs, null)
+            val tvPlaylist = displayedSongsView.findViewById<TextView>(R.id.tvPlaylist)
+
+            // Build the playlist string
             val builder = StringBuilder()
             for ((index, song) in MainActivity.songList.withIndex()) {
                 builder.append("Song ${index + 1}:\n")
@@ -30,7 +37,14 @@ class SecondActivity : AppCompatActivity() {
                 builder.append("Comment: ${song.comment}\n\n")
             }
 
-            tvDisplay.text = builder.toString()
+            // Set the string into tvPlaylist and show it in a dialog
+            tvPlaylist.text = builder.toString()
+
+            android.app.AlertDialog.Builder(this)
+                .setTitle("Songs in Playlist")
+                .setView(displayedSongsView)
+                .setPositiveButton("OK", null)
+                .show()
         }
 
         btnAvgRating.setOnClickListener {

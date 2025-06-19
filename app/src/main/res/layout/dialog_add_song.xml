@@ -28,12 +28,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Song Title"
+        android:textColorHint="#808080"
         android:textColor="#FAFAFA" />
 
     <EditText
         android:id="@+id/etArtist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="#808080"
         android:textColor="#FAFAFA"
         android:layout_marginTop="15dp"
         android:hint="Artist Name" />
@@ -42,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:textColorHint="#808080"
         android:textColor="#FAFAFA"
         android:layout_marginTop="15dp"
         android:hint="Rating (1-5)" />
@@ -50,7 +53,16 @@
         android:id="@+id/etComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="#808080"
         android:textColor="#FAFAFA"
         android:layout_marginTop="15dp"
         android:hint="Comment" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#F6F3F3"
+        android:text="Save" />
 </LinearLayout>
