@@ -8,20 +8,24 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
 
+    // Declare views
     private lateinit var tvDisplay: TextView
     private lateinit var btnShowSongs: Button
     private lateinit var btnAvgRating: Button
     private lateinit var btnBack: Button
 
+    // Override onCreate method
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
+        // Initialise views
         tvDisplay = findViewById(R.id.tvDisplay)
         btnShowSongs = findViewById(R.id.btnShowSongs)
         btnAvgRating = findViewById(R.id.btnAvgRating)
         btnBack = findViewById(R.id.btnBack)
 
+        //
         btnShowSongs.setOnClickListener {
             // Inflate the new layout
             val displayedSongsView = layoutInflater.inflate(R.layout.displayed_songs, null)
@@ -40,6 +44,7 @@ class SecondActivity : AppCompatActivity() {
             // Set the string into tvPlaylist and show it in a dialog
             tvPlaylist.text = builder.toString()
 
+            // Show the dialog
             android.app.AlertDialog.Builder(this)
                 .setTitle("Songs in Playlist")
                 .setView(displayedSongsView)
@@ -47,6 +52,7 @@ class SecondActivity : AppCompatActivity() {
                 .show()
         }
 
+        // Handle average rating button click
         btnAvgRating.setOnClickListener {
             if (MainActivity.songList.isEmpty()) {
                 tvDisplay.text = "No songs in the playlist"
@@ -56,6 +62,7 @@ class SecondActivity : AppCompatActivity() {
             }
         }
 
+        // Handle back button click
         btnBack.setOnClickListener {
             finish()
         }
